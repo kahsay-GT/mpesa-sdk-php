@@ -1,0 +1,23 @@
+0000000000000000000000000000000000000000 059a3e987b8e3e1254a05efe8414555799ab050e kahsay21a <kahsay7g@gmail.com> 1742192161 +0300	commit (initial): PHP-SDK-for-M-Pesa
+059a3e987b8e3e1254a05efe8414555799ab050e 6975cbc28aed695fa751122842ef21823a094a30 kahsay21a <kahsay7g@gmail.com> 1742198175 +0300	commit: "kahsay-gt/mpesa-sdk-php"
+6975cbc28aed695fa751122842ef21823a094a30 b25b724cabc804cf05958bb8b925439e6c6a0c44 kahsay21a <kahsay7g@gmail.com> 1742200062 +0300	commit: Read Me
+b25b724cabc804cf05958bb8b925439e6c6a0c44 318d348f20209bcad286abf19af14073dff688a3 kahsay21a <kahsay7g@gmail.com> 1742200372 +0300	commit: Read.ME two
+318d348f20209bcad286abf19af14073dff688a3 18587bb6be501174a23fe6e502cba8f642695db1 kahsay21a <kahsay7g@gmail.com> 1742200453 +0300	commit: Read.md 3
+18587bb6be501174a23fe6e502cba8f642695db1 5eb12070479d7f7094f66896cd4fbfb02926dfad kahsay21a <kahsay7g@gmail.com> 1742200718 +0300	commit: Read Me. 3
+5eb12070479d7f7094f66896cd4fbfb02926dfad 73308a0801fa41bd259524eccc069b3e590114cf kahsay21a <kahsay7g@gmail.com> 1742201038 +0300	commit: contact added.
+73308a0801fa41bd259524eccc069b3e590114cf 1f47c63e9d3548afdd72919219cf4fb4b3c3ecc7 kahsay21a <kahsay7g@gmail.com> 1742201110 +0300	commit: contact added.
+1f47c63e9d3548afdd72919219cf4fb4b3c3ecc7 22ad3c9d2c02f98a587ce940615024121837e1b2 kahsay21a <kahsay7g@gmail.com> 1742201560 +0300	commit: final
+22ad3c9d2c02f98a587ce940615024121837e1b2 5c7a28f6a35c1cb59b4e70d8ac205cb67bba634b kahsay21a <kahsay7g@gmail.com> 1742202022 +0300	commit: final readme.md
+5c7a28f6a35c1cb59b4e70d8ac205cb67bba634b 937d13daa733c52378fd081fa76f63eca236c425 kahsay21a <kahsay7g@gmail.com> 1742202821 +0300	commit: kahsaygt
+937d13daa733c52378fd081fa76f63eca236c425 28113af9883aded026c904b0776957b8d417a03d kahsay21a <kahsay7g@gmail.com> 1742203518 +0300	commit: minimum-stability
+28113af9883aded026c904b0776957b8d417a03d 28113af9883aded026c904b0776957b8d417a03d kahsay21a <kahsay7g@gmail.com> 1742213501 +0300	reset: moving to origin/main
+28113af9883aded026c904b0776957b8d417a03d f2341a17a4a9199f3bc1dc9c5743bea4adc2af26 kahsay21a <kahsay7g@gmail.com> 1742214511 +0300	commit: guzzle installed
+f2341a17a4a9199f3bc1dc9c5743bea4adc2af26 74fec8be3da3ba335768deaf4a988b72d5f47df1 kahsay21a <kahsay7g@gmail.com> 1742217735 +0300	commit: final
+74fec8be3da3ba335768deaf4a988b72d5f47df1 47207bdcf5c1d133e80792ed857cc9ea6d713fd7 kahsay21a <kahsay7g@gmail.com> 1742224166 +0300	commit: Updated Guzzle dependency to ^7.0 for compatibility
+47207bdcf5c1d133e80792ed857cc9ea6d713fd7 3332a73fab7bc19c49a07cb6887c570295fca45a kahsay21a <kahsay7g@gmail.com> 1742225165 +0300	commit: Fixed namespace and cleaned up composer.json
+3332a73fab7bc19c49a07cb6887c570295fca45a 3332a73fab7bc19c49a07cb6887c570295fca45a kahsay21a <kahsay7g@gmail.com> 1742232439 +0300	checkout: moving from main to backup-branch
+3332a73fab7bc19c49a07cb6887c570295fca45a 059a3e987b8e3e1254a05efe8414555799ab050e kahsay21a <kahsay7g@gmail.com> 1742232797 +0300	reset: moving to 059a3e9
+059a3e987b8e3e1254a05efe8414555799ab050e 3332a73fab7bc19c49a07cb6887c570295fca45a kahsay21a <kahsay7g@gmail.com> 1742233051 +0300	checkout: moving from backup-branch to main
+3332a73fab7bc19c49a07cb6887c570295fca45a 758ecad59c461a2416d204ef73880032ee99b7f0 kahsay21a <kahsay7g@gmail.com> 1742233089 +0300	commit: back to first commit
+758ecad59c461a2416d204ef73880032ee99b7f0 758ecad59c461a2416d204ef73880032ee99b7f0 kahsay21a <kahsay7g@gmail.com> 1742233182 +0300	checkout: moving from main to updated-branch
+758ecad59c461a2416d204ef73880032ee99b7f0 758ecad59c461a2416d204ef73880032ee99b7f0 kahsay21a <kahsay7g@gmail.com> 1742233308 +0300	checkout: moving from updated-branch to main

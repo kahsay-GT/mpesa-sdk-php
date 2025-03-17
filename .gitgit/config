@@ -1,0 +1,26 @@
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	symlinks = false
+	ignorecase = true
+[remote "origin"]
+	url = https://github.com/kahsay-GT/mpesa-sdk-php.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "main"]
+	remote = origin
+	merge = refs/heads/main
+	github-pr-base-branch = "kahsay-GT#mpesa-sdk-php#updated-branch"
+[branch "backup-branch"]
+	github-pr-base-branch = "kahsay-GT#mpesa-sdk-php#main"
+	vscode-merge-base = origin/main
+	vscode-merge-base = origin/main
+	remote = origin
+	merge = refs/heads/backup-branch
+[branch "updated-branch"]
+	github-pr-base-branch = "kahsay-GT#mpesa-sdk-php#main"
+	vscode-merge-base = origin/main
+	vscode-merge-base = origin/main
+	remote = origin
+	merge = refs/heads/updated-branch

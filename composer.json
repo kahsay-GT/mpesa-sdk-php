@@ -1,0 +1,27 @@
+{
+    "name": "kahsaygt/mpesa-sdk-php",
+    "description": "A PHP SDK for M-PESA API integration",
+    "type": "library",
+    "require": {
+        "php": "^7.4|^8.0",
+        "ext-curl": "*",
+        "guzzlehttp/guzzle": "^7.0",
+    },
+    "autoload": {
+        "psr-4": {
+            "Mpesa\\Sdk\\": "src/"
+        }
+    },    
+    "require-dev": {
+        "phpunit/phpunit": "^9.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kahsay GT",
+            "email": "kahsay21a@email.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

@@ -1,0 +1,4 @@
+[2025-03-16 17:07:12] [INFO] Authentication successful. Access Token: KBCQAPwwrNHhQQZnUPSWJatyQM7d
+[2025-03-16 17:07:14] [INFO] STK Push successful: {"MerchantRequestID":"Partner name -c7daf4e0-2592-4ad2-9794-9404162ca58b","CheckoutRequestID":"ws_CO_1603202519071283327334","ResponseCode":"0","ResponseDescription":"Request accepted for processing","CustomerMessage":"Request accepted for processing"}
+[2025-03-17 18:36:00] [INFO] Authentication successful. Access Token: NVCxdcHjdFmtiZdlLBmSk59AqxpF
+[2025-03-17 18:36:04] [INFO] STK Push successful: {"MerchantRequestID":"Partner name -01f357b2-3c4c-40ad-ae0a-2618d250728f","CheckoutRequestID":"ws_CO_1703202520360487912678","ResponseCode":"0","ResponseDescription":"Request accepted for processing","CustomerMessage":"Request accepted for processing"}
