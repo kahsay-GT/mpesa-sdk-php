@@ -24,5 +24,12 @@
         }
     ],
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Mpesa\\Sdk\\MpesaServiceProvider"
+            ]
+        }
+    }
 }
