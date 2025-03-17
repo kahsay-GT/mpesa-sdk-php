@@ -47,10 +47,16 @@ Since this package is hosted on GitHub, add the repository to your `composer.jso
 "minimum-stability": "dev"
 ```
 
-Run the following command:
+### Run the following command:
 
 ```sh
 composer update
+```
+
+### Publish Config:
+
+```sh
+php artisan vendor:publish --tag=mpesa-config
 ```
 
 ## Usage 🛠️
