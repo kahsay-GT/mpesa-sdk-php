@@ -53,7 +53,7 @@ final class UuidV8 extends Uuid implements UuidInterface
         CodecInterface $codec,
         TimeConverterInterface $timeConverter
     ) {
-        if ($fields->getVersion() !== Version::Custom) {
+        if ($fields->getVersion() !== Uuid::UUID_TYPE_CUSTOM) {
             throw new InvalidArgumentException(
                 'Fields used to create a UuidV8 must represent a '
                 . 'version 8 (custom) UUID'

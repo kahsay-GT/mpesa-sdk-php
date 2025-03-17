@@ -1,6 +1,6 @@
 <?php
 
-namespace Kahsaygt\Mpesa\Utilities;
+namespace Mpesa\Sdk\Utilities;
 
 class Logger
 {

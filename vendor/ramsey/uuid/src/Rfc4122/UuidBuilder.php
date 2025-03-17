@@ -23,6 +23,7 @@ use Ramsey\Uuid\Exception\UnableToBuildUuidException;
 use Ramsey\Uuid\Exception\UnsupportedOperationException;
 use Ramsey\Uuid\Math\BrickMathCalculator;
 use Ramsey\Uuid\Rfc4122\UuidInterface as Rfc4122UuidInterface;
+use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 use Throwable;
 
@@ -33,30 +34,33 @@ use Throwable;
  */
 class UuidBuilder implements UuidBuilderInterface
 {
+    private TimeConverterInterface $unixTimeConverter;
+
     /**
-     * Constructs the UUID builder
+     * Constructs the DefaultUuidBuilder
      *
      * @param NumberConverterInterface $numberConverter The number converter to
      *     use when constructing the Uuid
      * @param TimeConverterInterface $timeConverter The time converter to use
      *     for converting Gregorian time extracted from version 1, 2, and 6
      *     UUIDs to Unix timestamps
-     * @param TimeConverterInterface $unixTimeConverter The time converter
+     * @param TimeConverterInterface|null $unixTimeConverter The time converter
      *     to use for converter Unix Epoch time extracted from version 7 UUIDs
      *     to Unix timestamps
      */
     public function __construct(
-        private readonly NumberConverterInterface $numberConverter,
-        private readonly TimeConverterInterface $timeConverter,
-        private readonly TimeConverterInterface $unixTimeConverter = new UnixTimeConverter(new BrickMathCalculator())
+        private NumberConverterInterface $numberConverter,
+        private TimeConverterInterface $timeConverter,
+        ?TimeConverterInterface $unixTimeConverter = null
     ) {
+        $this->unixTimeConverter = $unixTimeConverter ?? new UnixTimeConverter(new BrickMathCalculator());
     }
 
     /**
      * Builds and returns a Uuid
      *
      * @param CodecInterface $codec The codec to use for building this Uuid instance
-     * @param non-empty-string $bytes The byte string from which to construct a UUID
+     * @param string $bytes The byte string from which to construct a UUID
      *
      * @return Rfc4122UuidInterface UuidBuilder returns instances of Rfc4122UuidInterface
      *
@@ -77,21 +81,21 @@ class UuidBuilder implements UuidBuilderInterface
             }
 
             switch ($fields->getVersion()) {
-                case Version::Time:
+                case Uuid::UUID_TYPE_TIME:
                     return new UuidV1($fields, $this->numberConverter, $codec, $this->timeConverter);
-                case Version::DceSecurity:
+                case Uuid::UUID_TYPE_DCE_SECURITY:
                     return new UuidV2($fields, $this->numberConverter, $codec, $this->timeConverter);
-                case Version::HashMd5:
+                case Uuid::UUID_TYPE_HASH_MD5:
                     return new UuidV3($fields, $this->numberConverter, $codec, $this->timeConverter);
-                case Version::Random:
+                case Uuid::UUID_TYPE_RANDOM:
                     return new UuidV4($fields, $this->numberConverter, $codec, $this->timeConverter);
-                case Version::HashSha1:
+                case Uuid::UUID_TYPE_HASH_SHA1:
                     return new UuidV5($fields, $this->numberConverter, $codec, $this->timeConverter);
-                case Version::ReorderedTime:
+                case Uuid::UUID_TYPE_REORDERED_TIME:
                     return new UuidV6($fields, $this->numberConverter, $codec, $this->timeConverter);
-                case Version::UnixTime:
+                case Uuid::UUID_TYPE_UNIX_TIME:
                     return new UuidV7($fields, $this->numberConverter, $codec, $this->unixTimeConverter);
-                case Version::Custom:
+                case Uuid::UUID_TYPE_CUSTOM:
                     return new UuidV8($fields, $this->numberConverter, $codec, $this->timeConverter);
             }
 
@@ -106,8 +110,6 @@ class UuidBuilder implements UuidBuilderInterface
 
     /**
      * Proxy method to allow injecting a mock, for testing
-     *
-     * @param non-empty-string $bytes
      */
     protected function buildFields(string $bytes): FieldsInterface
     {

@@ -23,8 +23,6 @@ use Ramsey\Uuid\Rfc4122\FieldsInterface as Rfc4122FieldsInterface;
 use Ramsey\Uuid\Rfc4122\TimeTrait;
 use Ramsey\Uuid\Rfc4122\UuidInterface;
 use Ramsey\Uuid\Rfc4122\UuidV1;
-use Ramsey\Uuid\Rfc4122\Version;
-use Ramsey\Uuid\TimeBasedUuidInterface;
 use Ramsey\Uuid\Uuid as BaseUuid;
 
 /**
@@ -38,7 +36,7 @@ use Ramsey\Uuid\Uuid as BaseUuid;
  *
  * @psalm-immutable
  */
-class UuidV6 extends BaseUuid implements UuidInterface, TimeBasedUuidInterface
+class UuidV6 extends BaseUuid implements UuidInterface
 {
     use TimeTrait;
 
@@ -59,7 +57,7 @@ class UuidV6 extends BaseUuid implements UuidInterface, TimeBasedUuidInterface
         CodecInterface $codec,
         TimeConverterInterface $timeConverter
     ) {
-        if ($fields->getVersion() !== Version::ReorderedTime) {
+        if ($fields->getVersion() !== Uuid::UUID_TYPE_REORDERED_TIME) {
             throw new InvalidArgumentException(
                 'Fields used to create a UuidV6 must represent a '
                 . 'version 6 (reordered time) UUID'
@@ -81,11 +79,8 @@ class UuidV6 extends BaseUuid implements UuidInterface, TimeBasedUuidInterface
             . '1' . substr($hex, 0, 3)
             . substr($hex, 16);
 
-        /** @var non-empty-string $bin */
-        $bin = (string) hex2bin($hex);
-
         /** @var LazyUuidFromString $uuid */
-        $uuid = Uuid::fromBytes($bin);
+        $uuid = Uuid::fromBytes((string) hex2bin($hex));
 
         return $uuid->toUuidV1();
     }
@@ -102,11 +97,8 @@ class UuidV6 extends BaseUuid implements UuidInterface, TimeBasedUuidInterface
             . '6' . substr($hex, 5, 3)
             . substr($hex, 16);
 
-        /** @var non-empty-string $bin */
-        $bin = (string) hex2bin($hex);
-
         /** @var LazyUuidFromString $uuid */
-        $uuid = Uuid::fromBytes($bin);
+        $uuid = Uuid::fromBytes((string) hex2bin($hex));
 
         return $uuid->toUuidV6();
     }

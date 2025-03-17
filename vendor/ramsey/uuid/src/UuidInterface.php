@@ -18,6 +18,7 @@ use JsonSerializable;
 use Ramsey\Uuid\Fields\FieldsInterface;
 use Ramsey\Uuid\Type\Hexadecimal;
 use Ramsey\Uuid\Type\Integer as IntegerObject;
+use Serializable;
 use Stringable;
 
 /**
@@ -26,25 +27,12 @@ use Stringable;
  *
  * @psalm-immutable
  */
-interface UuidInterface extends JsonSerializable, Stringable
+interface UuidInterface extends
+    DeprecatedUuidInterface,
+    JsonSerializable,
+    Serializable,
+    Stringable
 {
-    /**
-     * @return mixed[]
-     */
-    public function __serialize(): array;
-
-    /**
-     * Casts the UUID to the string standard representation
-     *
-     * @psalm-return non-empty-string
-     */
-    public function __toString(): string;
-
-    /**
-     * @param mixed[] $data
-     */
-    public function __unserialize(array $data): void;
-
     /**
      * Returns -1, 0, or 1 if the UUID is less than, equal to, or greater than
      * the other UUID
@@ -58,7 +46,7 @@ interface UuidInterface extends JsonSerializable, Stringable
      *
      * @param UuidInterface $other The UUID to compare
      *
-     * @return int -1, 0, or 1 if the UUID is less than, equal to, or greater than $other
+     * @return int<-1,1> -1, 0, or 1 if the UUID is less than, equal to, or greater than $other
      */
     public function compareTo(UuidInterface $other): int;
 
@@ -66,7 +54,7 @@ interface UuidInterface extends JsonSerializable, Stringable
      * Returns true if the UUID is equal to the provided object
      *
      * The result is true if and only if the argument is not null, is a UUID
-     * object, has the same variant, and contains the same value, bit-for-bit,
+     * object, has the same variant, and contains the same value, bit for bit,
      * as the UUID.
      *
      * @param object|null $other An object to test for equality with this UUID
@@ -111,4 +99,11 @@ interface UuidInterface extends JsonSerializable, Stringable
      * @psalm-return non-empty-string
      */
     public function toString(): string;
+
+    /**
+     * Casts the UUID to the string standard representation
+     *
+     * @psalm-return non-empty-string
+     */
+    public function __toString(): string;
 }

@@ -19,7 +19,6 @@ use ValueError;
 
 use function assert;
 use function is_numeric;
-use function ltrim;
 use function preg_match;
 use function sprintf;
 use function substr;
@@ -39,13 +38,13 @@ use function substr;
 final class Integer implements NumberInterface
 {
     /**
-     * @var numeric-string
+     * @psalm-var numeric-string
      */
-    private readonly string $value;
+    private string $value;
 
     private bool $isNegative = false;
 
-    public function __construct(float | int | self | string $value)
+    public function __construct(float | int | string | self $value)
     {
         $this->value = $value instanceof self ? (string) $value : $this->prepareValue($value);
     }
@@ -68,15 +67,17 @@ final class Integer implements NumberInterface
      */
     public function __toString(): string
     {
-        return $this->value;
+        return $this->toString();
     }
 
-    /**
-     * @psalm-return numeric-string
-     */
     public function jsonSerialize(): string
     {
-        return $this->value;
+        return $this->toString();
+    }
+
+    public function serialize(): string
+    {
+        return $this->toString();
     }
 
     /**
@@ -84,21 +85,33 @@ final class Integer implements NumberInterface
      */
     public function __serialize(): array
     {
-        return ['string' => $this->value];
+        return ['string' => $this->toString()];
     }
 
     /**
-     * @inheritDoc
+     * Constructs the object from a serialized string representation
+     *
+     * @param string $data The serialized string representation of the object
+     *
+     * @psalm-suppress UnusedMethodCall
+     */
+    public function unserialize(string $data): void
+    {
+        $this->__construct($data);
+    }
+
+    /**
+     * @param array{string?: string} $data
      */
     public function __unserialize(array $data): void
     {
+        // @codeCoverageIgnoreStart
         if (!isset($data['string'])) {
             throw new ValueError(sprintf('%s(): Argument #1 ($data) is invalid', __METHOD__));
         }
+        // @codeCoverageIgnoreEnd
 
-        assert(is_string($data['string']));
-
-        $this->value = $this->prepareValue($data['string']);
+        $this->unserialize($data['string']);
     }
 
     /**

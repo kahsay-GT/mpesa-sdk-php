@@ -1,6 +1,6 @@
 <?php
 
-namespace Kahsaygt\Mpesa\Exceptions;
+namespace Mpesa\Sdk\Exceptions;
 
 use Exception;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace Kahsaygt\Mpesa\Utilities;
+namespace Mpesa\Sdk\Utilities;
 
-use Kahsaygt\Mpesa\Exceptions\ValidationException;
+use Mpesa\Sdk\Exceptions\ValidationException;
 
 class Validator
 {

@@ -19,7 +19,6 @@ use Ramsey\Uuid\Converter\NumberConverterInterface;
 use Ramsey\Uuid\Converter\TimeConverterInterface;
 use Ramsey\Uuid\Exception\InvalidArgumentException;
 use Ramsey\Uuid\Rfc4122\FieldsInterface as Rfc4122FieldsInterface;
-use Ramsey\Uuid\TimeBasedUuidInterface;
 use Ramsey\Uuid\Type\Integer as IntegerObject;
 use Ramsey\Uuid\Uuid;
 
@@ -51,7 +50,7 @@ use function hexdec;
  *
  * @psalm-immutable
  */
-final class UuidV2 extends Uuid implements UuidInterface, TimeBasedUuidInterface
+final class UuidV2 extends Uuid implements UuidInterface
 {
     use TimeTrait;
 
@@ -72,7 +71,7 @@ final class UuidV2 extends Uuid implements UuidInterface, TimeBasedUuidInterface
         CodecInterface $codec,
         TimeConverterInterface $timeConverter
     ) {
-        if ($fields->getVersion() !== Version::DceSecurity) {
+        if ($fields->getVersion() !== Uuid::UUID_TYPE_DCE_SECURITY) {
             throw new InvalidArgumentException(
                 'Fields used to create a UuidV2 must represent a '
                 . 'version 2 (DCE Security) UUID'
@@ -84,21 +83,17 @@ final class UuidV2 extends Uuid implements UuidInterface, TimeBasedUuidInterface
 
     /**
      * Returns the local domain used to create this version 2 UUID
-     *
-     * @return positive-int
      */
     public function getLocalDomain(): int
     {
+        /** @var Rfc4122FieldsInterface $fields */
         $fields = $this->getFields();
 
-        /** @var positive-int */
         return (int) hexdec($fields->getClockSeqLow()->toString());
     }
 
     /**
      * Returns the string name of the local domain
-     *
-     * @return non-empty-string
      */
     public function getLocalDomainName(): string
     {
@@ -110,10 +105,11 @@ final class UuidV2 extends Uuid implements UuidInterface, TimeBasedUuidInterface
      */
     public function getLocalIdentifier(): IntegerObject
     {
+        /** @var Rfc4122FieldsInterface $fields */
         $fields = $this->getFields();
 
         return new IntegerObject(
-            $this->getNumberConverter()->fromHex($fields->getTimeLow()->toString())
+            $this->numberConverter->fromHex($fields->getTimeLow()->toString())
         );
     }
 }

@@ -22,15 +22,13 @@ use Ramsey\Uuid\Validator\ValidatorInterface;
 /**
  * UuidFactoryInterface defines common functionality all `UuidFactory` instances
  * must implement
- *
- * @psalm-immutable
  */
 interface UuidFactoryInterface
 {
     /**
      * Creates a UUID from a byte string
      *
-     * @param non-empty-string $bytes A binary string
+     * @param string $bytes A binary string
      *
      * @return UuidInterface A UuidInterface instance created from a binary
      *     string representation
@@ -45,9 +43,9 @@ interface UuidFactoryInterface
      * @param DateTimeInterface $dateTime The date and time
      * @param Hexadecimal|null $node A 48-bit number representing the hardware
      *     address
-     * @param int<0, 16383>|null $clockSeq A 14-bit number used to help avoid
-     *     duplicates that could arise when the clock is set backwards in time
-     *     or if the node ID changes
+     * @param int|null $clockSeq A 14-bit number used to help avoid duplicates
+     *     that could arise when the clock is set backwards in time or if the
+     *     node ID changes
      *
      * @return UuidInterface A UuidInterface instance that represents a
      *     version 1 UUID created from a DateTimeInterface instance
@@ -61,7 +59,7 @@ interface UuidFactoryInterface
     /**
      * Creates a UUID from a 128-bit integer string
      *
-     * @param numeric-string $integer String representation of 128-bit integer
+     * @param string $integer String representation of 128-bit integer
      *
      * @return UuidInterface A UuidInterface instance created from the string
      *     representation of a 128-bit integer
@@ -73,7 +71,7 @@ interface UuidFactoryInterface
     /**
      * Creates a UUID from the string standard representation
      *
-     * @param non-empty-string $uuid A hexadecimal string
+     * @param string $uuid A hexadecimal string
      *
      * @return UuidInterface A UuidInterface instance created from a hexadecimal
      *     string representation
@@ -93,17 +91,17 @@ interface UuidFactoryInterface
      * Returns a version 1 (Gregorian time) UUID from a host ID, sequence number,
      * and the current time
      *
-     * @param Hexadecimal|int<1, max>|non-empty-string|null $node A 48-bit number
-     *     representing the hardware address; this number may be represented as
-     *     an integer or a hexadecimal string
-     * @param int<0, 16383>|null $clockSeq A 14-bit number used to help avoid
-     *     duplicates that could arise when the clock is set backwards in time
-     *     or if the node ID changes
+     * @param Hexadecimal|int|string|null $node A 48-bit number representing the
+     *     hardware address; this number may be represented as an integer or a
+     *     hexadecimal string
+     * @param int|null $clockSeq A 14-bit number used to help avoid duplicates
+     *     that could arise when the clock is set backwards in time or if the
+     *     node ID changes
      *
      * @return UuidInterface A UuidInterface instance that represents a
      *     version 1 UUID
      */
-    public function uuid1(Hexadecimal | int | string | null $node = null, ?int $clockSeq = null): UuidInterface;
+    public function uuid1($node = null, ?int $clockSeq = null): UuidInterface;
 
     /**
      * Returns a version 2 (DCE Security) UUID from a local domain, local
@@ -117,9 +115,9 @@ interface UuidFactoryInterface
      *     if the local domain is org
      * @param Hexadecimal|null $node A 48-bit number representing the hardware
      *     address
-     * @param int<0, 63>|null $clockSeq A 6-bit number used to help avoid
-     *     duplicates that could arise when the clock is set backwards in time
-     *     or if the node ID changes
+     * @param int|null $clockSeq A 14-bit number used to help avoid duplicates
+     *     that could arise when the clock is set backwards in time or if the
+     *     node ID changes
      *
      * @return UuidInterface A UuidInterface instance that represents a
      *     version 2 UUID
@@ -135,7 +133,7 @@ interface UuidFactoryInterface
      * Returns a version 3 (name-based) UUID based on the MD5 hash of a
      * namespace ID and a name
      *
-     * @param non-empty-string|UuidInterface $ns The namespace (must be a valid UUID)
+     * @param string|UuidInterface $ns The namespace (must be a valid UUID)
      * @param string $name The name to use for creating a UUID
      *
      * @return UuidInterface A UuidInterface instance that represents a
@@ -143,7 +141,7 @@ interface UuidFactoryInterface
      *
      * @psalm-pure
      */
-    public function uuid3(UuidInterface | string $ns, string $name): UuidInterface;
+    public function uuid3($ns, string $name): UuidInterface;
 
     /**
      * Returns a version 4 (random) UUID
@@ -157,7 +155,7 @@ interface UuidFactoryInterface
      * Returns a version 5 (name-based) UUID based on the SHA-1 hash of a
      * namespace ID and a name
      *
-     * @param non-empty-string|UuidInterface $ns The namespace (must be a valid UUID)
+     * @param string|UuidInterface $ns The namespace (must be a valid UUID)
      * @param string $name The name to use for creating a UUID
      *
      * @return UuidInterface A UuidInterface instance that represents a
@@ -165,7 +163,7 @@ interface UuidFactoryInterface
      *
      * @psalm-pure
      */
-    public function uuid5(UuidInterface | string $ns, string $name): UuidInterface;
+    public function uuid5($ns, string $name): UuidInterface;
 
     /**
      * Returns a version 6 (reordered time) UUID from a host ID, sequence number,
@@ -173,9 +171,9 @@ interface UuidFactoryInterface
      *
      * @param Hexadecimal|null $node A 48-bit number representing the hardware
      *     address
-     * @param int<0, 16383>|null $clockSeq A 14-bit number used to help avoid
-     *     duplicates that could arise when the clock is set backwards in time
-     *     or if the node ID changes
+     * @param int|null $clockSeq A 14-bit number used to help avoid duplicates
+     *     that could arise when the clock is set backwards in time or if the
+     *     node ID changes
      *
      * @return UuidInterface A UuidInterface instance that represents a
      *     version 6 UUID

@@ -1,8 +1,8 @@
 <?php
 
-namespace Kahsaygt\Mpesa;
+namespace Mpesa\Sdk;
 
-use Kahsaygt\Mpesa\Utilities\Validator;
+use Mpesa\Sdk\Utilities\Validator;
 
 class TransactionStatus
 {

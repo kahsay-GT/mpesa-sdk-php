@@ -26,5 +26,4 @@ use Ramsey\Uuid\UuidInterface as BaseUuidInterface;
  */
 interface UuidInterface extends BaseUuidInterface
 {
-    public function getFields(): FieldsInterface;
 }

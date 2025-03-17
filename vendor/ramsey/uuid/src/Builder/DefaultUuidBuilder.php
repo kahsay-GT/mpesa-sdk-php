@@ -12,19 +12,15 @@
 
 declare(strict_types=1);
 
-namespace Ramsey\Uuid;
+namespace Ramsey\Uuid\Builder;
 
-use DateTimeInterface;
+use Ramsey\Uuid\Rfc4122\UuidBuilder as Rfc4122UuidBuilder;
 
 /**
- * Time-based UUIDs are derived from a date/time value
+ * @deprecated Transition to {@see Rfc4122UuidBuilder}.
  *
  * @psalm-immutable
  */
-interface TimeBasedUuidInterface extends UuidInterface
+class DefaultUuidBuilder extends Rfc4122UuidBuilder
 {
-    /**
-     * Returns a date object representing the timestamp associated with the UUID
-     */
-    public function getDateTime(): DateTimeInterface;
 }

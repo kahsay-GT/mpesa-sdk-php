@@ -50,7 +50,7 @@ class GenericTimeConverter implements TimeConverterInterface
      */
     private const MICROSECOND_INTERVALS = '10';
 
-    public function __construct(private readonly CalculatorInterface $calculator)
+    public function __construct(private CalculatorInterface $calculator)
     {
     }
 
@@ -97,7 +97,7 @@ class GenericTimeConverter implements TimeConverterInterface
         // From the total, subtract the number of 100-nanosecond intervals from
         // the Gregorian calendar epoch to the Unix epoch. This gives us the
         // number of 100-nanosecond intervals from the Unix epoch, which also
-        // includes the micro-time.
+        // includes the microtime.
         $epochNanoseconds = $this->calculator->subtract(
             $this->calculator->toInteger($uuidTimestamp),
             new IntegerObject(self::GREGORIAN_TO_UNIX_INTERVALS)

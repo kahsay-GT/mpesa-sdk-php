@@ -80,6 +80,7 @@ class FeatureSet
      * @param bool $useGuids True build UUIDs using the GuidStringCodec
      * @param bool $force32Bit True to force the use of 32-bit functionality
      *     (primarily for testing purposes)
+     * @param bool $forceNoBigNumber (obsolete)
      * @param bool $ignoreSystemNode True to disable attempts to check for the
      *     system node ID (primarily for testing purposes)
      * @param bool $enablePecl True to enable the use of the PeclUuidTimeGenerator
@@ -88,6 +89,7 @@ class FeatureSet
     public function __construct(
         bool $useGuids = false,
         private bool $force32Bit = false,
+        bool $forceNoBigNumber = false,
         private bool $ignoreSystemNode = false,
         private bool $enablePecl = false
     ) {

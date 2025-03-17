@@ -1,8 +1,8 @@
 <?php
 
-namespace Kahsaygt\Mpesa;
+namespace Mpesa\Sdk;
 
-use Kahsaygt\Mpesa\Models\TokenResponse;
+use Mpesa\Sdk\Models\TokenResponse;
 
 class Authentication
 {

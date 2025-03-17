@@ -20,7 +20,6 @@ use Ramsey\Uuid\Type\Integer as IntegerObject;
 
 use function escapeshellarg;
 use function preg_split;
-use function str_contains;
 use function str_getcsv;
 use function strrpos;
 use function strtolower;
@@ -42,7 +41,7 @@ class SystemDceSecurityProvider implements DceSecurityProviderInterface
      */
     public function getUid(): IntegerObject
     {
-        /** @var IntegerObject | string | null $uid */
+        /** @var int|float|string|IntegerObject|null $uid */
         static $uid = null;
 
         if ($uid instanceof IntegerObject) {
@@ -61,8 +60,6 @@ class SystemDceSecurityProvider implements DceSecurityProviderInterface
             );
         }
 
-        // Do not "inline" the return value; this is necessary to
-        // set the static $uid variable for this method.
         $uid = new IntegerObject($uid);
 
         return $uid;
@@ -75,7 +72,7 @@ class SystemDceSecurityProvider implements DceSecurityProviderInterface
      */
     public function getGid(): IntegerObject
     {
-        /** @var IntegerObject | string | null $gid */
+        /** @var int|float|string|IntegerObject|null $gid */
         static $gid = null;
 
         if ($gid instanceof IntegerObject) {
@@ -94,8 +91,6 @@ class SystemDceSecurityProvider implements DceSecurityProviderInterface
             );
         }
 
-        // Do not "inline" the return value; this is necessary to
-        // set the static $uid variable for this method.
         $gid = new IntegerObject($gid);
 
         return $gid;
@@ -148,11 +143,11 @@ class SystemDceSecurityProvider implements DceSecurityProviderInterface
     {
         /**
          * @psalm-suppress UnnecessaryVarAnnotation
-         * @var string $os
+         * @var string $phpOs
          */
-        $os = constant('PHP_OS');
+        $phpOs = constant('PHP_OS');
 
-        return strtoupper(substr($os, 0, 3));
+        return strtoupper(substr($phpOs, 0, 3));
     }
 
     /**

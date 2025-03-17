@@ -27,7 +27,7 @@ class FallbackNodeProvider implements NodeProviderInterface
     /**
      * @param iterable<NodeProviderInterface> $providers Array of node providers
      */
-    public function __construct(private readonly iterable $providers)
+    public function __construct(private iterable $providers)
     {
     }
 

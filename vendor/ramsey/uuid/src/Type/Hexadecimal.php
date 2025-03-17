@@ -19,8 +19,6 @@ use ValueError;
 
 use function preg_match;
 use function sprintf;
-use function str_starts_with;
-use function strtolower;
 use function substr;
 
 /**
@@ -34,13 +32,10 @@ use function substr;
  */
 final class Hexadecimal implements TypeInterface
 {
-    /**
-     * @var non-empty-string
-     */
-    private readonly string $value;
+    private string $value;
 
     /**
-     * @param non-empty-string|self $value The hexadecimal value to store
+     * @param self|string $value The hexadecimal value to store
      */
     public function __construct(self | string $value)
     {
@@ -54,12 +49,17 @@ final class Hexadecimal implements TypeInterface
 
     public function __toString(): string
     {
-        return $this->value;
+        return $this->toString();
     }
 
     public function jsonSerialize(): string
     {
-        return $this->value;
+        return $this->toString();
+    }
+
+    public function serialize(): string
+    {
+        return $this->toString();
     }
 
     /**
@@ -67,28 +67,35 @@ final class Hexadecimal implements TypeInterface
      */
     public function __serialize(): array
     {
-        return ['string' => $this->value];
+        return ['string' => $this->toString()];
     }
 
     /**
-     * @inheritDoc
+     * Constructs the object from a serialized string representation
+     *
+     * @param string $data The serialized string representation of the object
+     *
+     * @psalm-suppress UnusedMethodCall
+     */
+    public function unserialize(string $data): void
+    {
+        $this->__construct($data);
+    }
+
+    /**
+     * @param array{string?: string} $data
      */
     public function __unserialize(array $data): void
     {
+        // @codeCoverageIgnoreStart
         if (!isset($data['string'])) {
             throw new ValueError(sprintf('%s(): Argument #1 ($data) is invalid', __METHOD__));
         }
+        // @codeCoverageIgnoreEnd
 
-        assert(is_string($data['string']) && $data['string'] !== '');
-
-        $this->value = $this->prepareValue($data['string']);
+        $this->unserialize($data['string']);
     }
 
-    /**
-     * @param non-empty-string $value
-     *
-     * @return non-empty-string
-     */
     private function prepareValue(string $value): string
     {
         $value = strtolower($value);
@@ -103,7 +110,6 @@ final class Hexadecimal implements TypeInterface
             );
         }
 
-        /** @var non-empty-string */
         return $value;
     }
 }

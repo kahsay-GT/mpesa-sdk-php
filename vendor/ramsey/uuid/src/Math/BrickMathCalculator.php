@@ -114,7 +114,6 @@ final class BrickMathCalculator implements CalculatorInterface
     public function toBase(IntegerObject $value, int $base): string
     {
         try {
-            /** @var non-empty-string */
             return BigInteger::of($value->toString())->toBase($base);
         } catch (MathException | \InvalidArgumentException $exception) {
             throw new InvalidArgumentException(
@@ -137,9 +136,11 @@ final class BrickMathCalculator implements CalculatorInterface
 
     /**
      * Maps ramsey/uuid rounding modes to those used by brick/math
+     *
+     * @return BrickMathRounding::*
      */
-    private function getBrickRoundingMode(int $roundingMode): int
+    private function getBrickRoundingMode(int $roundingMode)
     {
-        return self::ROUNDING_MODE_MAP[$roundingMode] ?? 0;
+        return self::ROUNDING_MODE_MAP[$roundingMode] ?? BrickMathRounding::UNNECESSARY;
     }
 }

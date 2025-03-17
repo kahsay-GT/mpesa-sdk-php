@@ -1,15 +1,15 @@
 <?php
 
-namespace Kahsaygt\Mpesa\Tests;
+namespace Mpesa\Sdk\Tests;
 
 use PHPUnit\Framework\TestCase;
-use Kahsaygt\Mpesa\Client;
-use Kahsaygt\Mpesa\Authentication;
+use Mpesa\Sdk\Client;
+use Mpesa\Sdk\Authentication;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
-use Kahsaygt\Mpesa\Utilities\Logger;
+use Mpesa\Sdk\Utilities\Logger;
 
 class AuthenticationTest extends TestCase
 {

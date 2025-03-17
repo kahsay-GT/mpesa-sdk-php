@@ -1,6 +1,6 @@
 <?php
 
-namespace Kahsaygt\Mpesa\Models;
+namespace Mpesa\Sdk\Models;
 
 class StkPushResponse
 {

@@ -53,16 +53,16 @@ class DceSecurityGenerator implements DceSecurityGeneratorInterface
     private const CLOCK_SEQ_LOW = 0;
 
     public function __construct(
-        private readonly NumberConverterInterface $numberConverter,
-        private readonly TimeGeneratorInterface $timeGenerator,
-        private readonly DceSecurityProviderInterface $dceSecurityProvider
+        private NumberConverterInterface $numberConverter,
+        private TimeGeneratorInterface $timeGenerator,
+        private DceSecurityProviderInterface $dceSecurityProvider
     ) {
     }
 
     public function generate(
         int $localDomain,
         ?IntegerObject $localIdentifier = null,
-        Hexadecimal | int | string | null $node = null,
+        ?Hexadecimal $node = null,
         ?int $clockSeq = null
     ): string {
         if (!in_array($localDomain, self::DOMAINS)) {
@@ -122,9 +122,12 @@ class DceSecurityGenerator implements DceSecurityGeneratorInterface
         $domainByte = pack('n', $localDomain)[1];
         $identifierBytes = (string) hex2bin(str_pad($identifierHex, 8, '0', STR_PAD_LEFT));
 
+        if ($node instanceof Hexadecimal) {
+            $node = $node->toString();
+        }
+
         // Shift the clock sequence 8 bits to the left, so it matches 0x3f00.
         if ($clockSeq !== null) {
-            /** @var int<0, 16383> $clockSeq */
             $clockSeq = $clockSeq << 8;
         }
 
@@ -133,7 +136,6 @@ class DceSecurityGenerator implements DceSecurityGeneratorInterface
         // Replace bytes in the time-based UUID with DCE Security values.
         $bytes = substr_replace($bytes, $identifierBytes, 0, 4);
 
-        /** @var non-empty-string */
         return substr_replace($bytes, $domainByte, 9, 1);
     }
 }

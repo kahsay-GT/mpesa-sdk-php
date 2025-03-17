@@ -106,12 +106,12 @@ class SystemNodeProvider implements NodeProviderInterface
 
         /**
          * @psalm-suppress UnnecessaryVarAnnotation
-         * @var string $os
+         * @var string $phpOs
          */
-        $os = constant('PHP_OS');
+        $phpOs = constant('PHP_OS');
 
         ob_start();
-        switch (strtoupper(substr($os, 0, 3))) {
+        switch (strtoupper(substr($phpOs, 0, 3))) {
             case 'WIN':
                 passthru('ipconfig /all 2>&1');
 
@@ -153,27 +153,30 @@ class SystemNodeProvider implements NodeProviderInterface
 
         /**
          * @psalm-suppress UnnecessaryVarAnnotation
-         * @var string $os
+         * @var string $phpOs
          */
-        $os = constant('PHP_OS');
+        $phpOs = constant('PHP_OS');
 
-        if (strtoupper($os) === 'LINUX') {
+        if (strtoupper($phpOs) === 'LINUX') {
             $addressPaths = glob('/sys/class/net/*/address', GLOB_NOSORT);
 
             if ($addressPaths === false || count($addressPaths) === 0) {
                 return '';
             }
 
-            /** @var string[] $macs */
+            /** @var array<array-key, string> $macs */
             $macs = [];
 
             array_walk($addressPaths, function (string $addressPath) use (&$macs): void {
                 if (is_readable($addressPath)) {
-                    $macs[] = (string) file_get_contents($addressPath);
+                    $macs[] = file_get_contents($addressPath);
                 }
             });
 
-            $macs = array_map(trim(...), $macs);
+            /** @var callable $trim */
+            $trim = 'trim';
+
+            $macs = array_map($trim, $macs);
 
             // Remove invalid entries.
             $macs = array_filter($macs, function (string $address) {

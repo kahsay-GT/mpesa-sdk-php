@@ -1,10 +1,10 @@
 <?php
 
-namespace Kahsaygt\Mpesa\Tests;
+namespace Mpesa\Sdk\Tests;
 
 use PHPUnit\Framework\TestCase;
-use Kahsaygt\Mpesa\Utilities\Validator;
-use Kahsaygt\Mpesa\Exceptions\ValidationException;
+use Mpesa\Sdk\Utilities\Validator;
+use Mpesa\Sdk\Exceptions\ValidationException;
 
 class ValidatorTest extends TestCase
 {

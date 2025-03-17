@@ -5,7 +5,8 @@
     "require": {
         "php": "^7.4|^8.0",
         "ext-curl": "*",
-        "guzzlehttp/guzzle": "^7.0"
+        "guzzlehttp/guzzle": "^7.0",
+        "ramsey/uuid": "^4.7"
     },
     "autoload": {
         "psr-4": {

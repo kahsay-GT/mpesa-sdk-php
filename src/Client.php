@@ -1,10 +1,10 @@
 <?php
 
-namespace Kahsaygt\Mpesa;
+namespace Mpesa\Sdk;
 
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\RequestException;
-use Kahsaygt\Mpesa\Exceptions\ApiException;
+use Mpesa\Sdk\Exceptions\ApiException;
 
 class Client
 {

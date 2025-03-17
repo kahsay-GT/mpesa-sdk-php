@@ -3,14 +3,14 @@
 require __DIR__ . '/../vendor/autoload.php';
 
 
-use Kahsaygt\Mpesa\Client;
-use Kahsaygt\Mpesa\Authentication;
-use Kahsaygt\Mpesa\StkPush;
-use Kahsaygt\Mpesa\C2B;
-use Kahsaygt\Mpesa\B2C;
-use Kahsaygt\Mpesa\Utilities\Logger;
-use Kahsaygt\Mpesa\Exceptions\ValidationException;
-use Kahsaygt\Mpesa\Exceptions\ApiException;
+use Mpesa\Sdk\Client;
+use Mpesa\Sdk\Authentication;
+use Mpesa\Sdk\StkPush;
+use Mpesa\Sdk\C2B;
+use Mpesa\Sdk\B2C;
+use Mpesa\Sdk\Utilities\Logger;
+use Mpesa\Sdk\Exceptions\ValidationException;
+use Mpesa\Sdk\Exceptions\ApiException;
 use Ramsey\Uuid\Uuid; // Optional: For generating RequestRefID (install via `composer require ramsey/uuid`)
 
 $config = [

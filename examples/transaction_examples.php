@@ -2,12 +2,12 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
-use Kahsaygt\Mpesa\Client;
-use Kahsaygt\Mpesa\Authentication;
-use Kahsaygt\Mpesa\TransactionStatus;
-use Kahsaygt\Mpesa\AccountBalance;
-use Kahsaygt\Mpesa\TransactionReversal;
-use Kahsaygt\Mpesa\Utilities\Logger;
+use Mpesa\Sdk\Client;
+use Mpesa\Sdk\Authentication;
+use Mpesa\Sdk\TransactionStatus;
+use Mpesa\Sdk\AccountBalance;
+use Mpesa\Sdk\TransactionReversal;
+use Mpesa\Sdk\Utilities\Logger;
 use Ramsey\Uuid\Uuid;
 
 // Configuration

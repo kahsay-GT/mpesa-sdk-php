@@ -39,7 +39,7 @@ class FallbackBuilder implements UuidBuilderInterface
      * succeeds
      *
      * @param CodecInterface $codec The codec to use for building this instance
-     * @param non-empty-string $bytes The byte string from which to construct a UUID
+     * @param string $bytes The byte string from which to construct a UUID
      *
      * @return UuidInterface an instance of a UUID object
      *

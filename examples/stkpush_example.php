@@ -2,10 +2,10 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
-use Kahsaygt\Mpesa\Client;
-use Kahsaygt\Mpesa\Authentication;
-use Kahsaygt\Mpesa\StkPush;
-use Kahsaygt\Mpesa\Utilities\Logger;
+use Mpesa\Sdk\Client;
+use Mpesa\Sdk\Authentication;
+use Mpesa\Sdk\StkPush;
+use Mpesa\Sdk\Utilities\Logger;
 use Ramsey\Uuid\Uuid;
 
 // Configuration
@@ -61,10 +61,10 @@ try {
     // echo "ResponseCode: " . $response['ResponseCode'] . "\n";
     // echo "ResponseDescription: " . $response['ResponseDescription'] . "\n";
     echo json_encode($response);
-} catch (\Kahsaygt\Mpesa\Exceptions\ValidationException $e) {
+} catch (\Mpesa\Sdk\Exceptions\ValidationException $e) {
     $logger->error("Validation error: " . $e->getMessage());
     echo "Validation error: " . $e->getMessage() . "\n";
-} catch (\Kahsaygt\Mpesa\Exceptions\ApiException $e) {
+} catch (\Mpesa\Sdk\Exceptions\ApiException $e) {
     $logger->error("API error: " . $e->getMessage() . " (Code: " . $e->getCode() . ")");
     echo "API error: " . $e->getMessage() . " (Code: " . $e->getCode() . ")\n";
 } catch (\Exception $e) {

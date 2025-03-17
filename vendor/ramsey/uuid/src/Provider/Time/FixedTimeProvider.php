@@ -35,7 +35,7 @@ class FixedTimeProvider implements TimeProviderInterface
      *
      * @param int|string|IntegerObject $value The `usec` value to set
      */
-    public function setUsec(int | string | IntegerObject $value): void
+    public function setUsec($value): void
     {
         $this->time = new Time($this->time->getSeconds(), $value);
     }
@@ -45,7 +45,7 @@ class FixedTimeProvider implements TimeProviderInterface
      *
      * @param int|string|IntegerObject $value The `sec` value to set
      */
-    public function setSec(int | string | IntegerObject $value): void
+    public function setSec($value): void
     {
         $this->time = new Time($value, $this->time->getMicroseconds());
     }

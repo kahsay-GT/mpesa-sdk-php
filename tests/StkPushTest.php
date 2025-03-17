@@ -1,10 +1,10 @@
 <?php
 
-namespace Kahsaygt\Mpesa\Tests;
+namespace Mpesa\Sdk\Tests;
 
 use PHPUnit\Framework\TestCase;
-use Kahsaygt\Mpesa\Client;
-use Kahsaygt\Mpesa\StkPush;
+use Mpesa\Sdk\Client;
+use Mpesa\Sdk\StkPush;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
@@ -67,7 +67,7 @@ class StkPushTest extends TestCase
         $client = $this->createMockClient([]);
         $stk = new StkPush($client);
         
-        $this->expectException(\Kahsaygt\Mpesa\Exceptions\ValidationException::class);
+        $this->expectException(\Mpesa\Sdk\Exceptions\ValidationException::class);
         $this->expectExceptionMessage('Field Amount is required.');
         
         $stk->processPayment([
