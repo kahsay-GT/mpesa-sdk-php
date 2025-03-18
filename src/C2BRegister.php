@@ -4,7 +4,7 @@ namespace Mpesa\Sdk;
 
 use Mpesa\Sdk\Utilities\Validator;
 
-class C2B
+class C2BRegister
 {
     private Client $client;
 

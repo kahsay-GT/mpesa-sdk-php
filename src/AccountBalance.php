@@ -18,8 +18,8 @@ class AccountBalance
      *
      * @param array $data Account balance request data
      * @return array API response
-     * @throws \XAI\Mpesa\Exceptions\ValidationException
-     * @throws \XAI\Mpesa\Exceptions\ApiException
+     * @throws \Mpesa\Sdk\Exceptions\ValidationException
+     * @throws \Mpesa\Sdk\Exceptions\ApiException
      */
     public function query(array $data): array
     {

@@ -4,7 +4,7 @@ namespace Mpesa\Sdk;
 
 use Mpesa\Sdk\Utilities\Validator;
 
-class B2C
+class B2CPayOut
 {
     private Client $client;
 

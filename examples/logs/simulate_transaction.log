@@ -1,0 +1,13 @@
+[2025-03-18 12:49:55] [ERROR] Simulate Transaction error: Client error: `POST https://apisandbox.safaricom.et/mpesa/c2b/v1/simulate` resulted in a `404 Not Found` response
+[2025-03-18 12:55:01] [ERROR] Simulate Transaction error: Client error: `POST https://apisandbox.safaricom.et/mpesa/b2c/simulatetransaction/v1/request` resulted in a `400 Bad Request` response:
+{
+                    "requestId":"1641-49dc-95b9-34880e1789eb1092762",
+                    "errorCode": "400.002.02",
+  (truncated...)
+
+[2025-03-18 13:10:34] [ERROR] Simulate Transaction error: Client error: `POST https://apisandbox.safaricom.et/mpesa/b2c/simulatetransaction/v1/request` resulted in a `400 Bad Request` response:
+{
+                    "requestId":"29db-4bee-89c7-7e1d4ed558731185163",
+                    "errorCode": "400.002.02",
+  (truncated...)
+

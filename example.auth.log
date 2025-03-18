@@ -1,2 +1,0 @@
-[2025-03-17 22:18:55] [ERROR] Authentication failed: cURL error 6: Could not resolve host: apisandbox.safaricom.et (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for https://apisandbox.safaricom.et/v1/token/generate?grant_type=client_credentials
-[2025-03-17 22:19:42] [ERROR] Authentication failed: cURL error 6: Could not resolve host: apisandbox.safaricom.et (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for https://apisandbox.safaricom.et/v1/token/generate?grant_type=client_credentials
