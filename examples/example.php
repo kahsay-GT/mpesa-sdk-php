@@ -2,7 +2,6 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
-
 use Mpesa\Sdk\Client;
 use Mpesa\Sdk\Authentication;
 use Mpesa\Sdk\StkPush;
