@@ -1,0 +1,18 @@
+[2025-03-18 20:01:20] [INFO] Transaction Reversal Data: {"OriginatorConversationID":"Partner name -7889e97e-5ea2-4a41-8c1d-7218b133e6b3","Initiator":"apitest","SecurityCredential":"lMhf0UqE4ydeEDwpUskmPgkNDZnA6NLi7z3T1TQuWCkH3\/ScW8pRRnobq\/AcwFvbC961+zDMgOEYGm8Oivb7L\/7Y9ED3lhR7pJvnH8B1wYis5ifdeeWI6XE2NSq8X1Tc7QB9Dg8SlPEud3tgloB2DlT+JIv3ebIl\/J\/8ihGVrq499bt1pz\/EA2nzkCtGeHRNbEDxkqkEnbioV0OM\/\/0bv4K++XyV6jUFlIIgkDkmcK6aOU8mPBHs2um9aP+Y+nTJaa6uHDudRFg0+3G6gt1zRCPs8AYbts2IebseBGfZKv5K6Lqk9\/W8657gEkrDZE8Mi78MVianqHdY\/8d6D9KKhw==","CommandID":"TransactionReversal","TransactionID":"0","Amount":200,"OriginalConcersationID":"AG-20250318-645f64af-6417-4f66-a062-6813ba668b06","PartyA":"1020","ReceiverParty":"251700404709","RecieverIdentifierType":"4","ResultURL":"https:\/\/www.myservice:8080\/result","QueueTimeOutURL":"https:\/\/www.myservice:8080\/timeout","Remarks":"B2C Reversal","Occasion":"Layout"}
+[2025-03-18 20:01:20] [ERROR] Transaction Reversal error: Server error: `POST https://apisandbox.safaricom.et/mpesa/reversal/v2/request` resulted in a `500 Internal Server Error` response:
+{
+                    "requestId":"Partner name -7889e97e-5ea2-4a41-8c1d-7218b133e6b3",
+                    "errorCode": (truncated...)
+
+[2025-03-18 20:07:46] [INFO] Transaction Reversal Data: {"OriginatorConversationID":"Partner name -b56d4742-711a-4c70-8efc-0d38c5ac92d6","Initiator":"apitest","SecurityCredential":"lMhf0UqE4ydeEDwpUskmPgkNDZnA6NLi7z3T1TQuWCkH3\/ScW8pRRnobq\/AcwFvbC961+zDMgOEYGm8Oivb7L\/7Y9ED3lhR7pJvnH8B1wYis5ifdeeWI6XE2NSq8X1Tc7QB9Dg8SlPEud3tgloB2DlT+JIv3ebIl\/J\/8ihGVrq499bt1pz\/EA2nzkCtGeHRNbEDxkqkEnbioV0OM\/\/0bv4K++XyV6jUFlIIgkDkmcK6aOU8mPBHs2um9aP+Y+nTJaa6uHDudRFg0+3G6gt1zRCPs8AYbts2IebseBGfZKv5K6Lqk9\/W8657gEkrDZE8Mi78MVianqHdY\/8d6D9KKhw==","CommandID":"TransactionReversal","TransactionID":"0","Amount":200,"OriginalConcersationID":"AG-20250318-549cb714-6160-4346-a961-23e0523f0577","PartyA":"1020","ReceiverParty":"251700404709","RecieverIdentifierType":"4","ResultURL":"https:\/\/www.myservice:8080\/result","QueueTimeOutURL":"https:\/\/www.myservice:8080\/timeout","Remarks":"B2C Reversal","Occasion":"Layout"}
+[2025-03-18 20:07:46] [ERROR] Transaction Reversal error: Server error: `POST https://apisandbox.safaricom.et/mpesa/reversal/v2/request` resulted in a `500 Internal Server Error` response:
+{
+                    "requestId":"Partner name -b56d4742-711a-4c70-8efc-0d38c5ac92d6",
+                    "errorCode": (truncated...)
+
+[2025-03-18 20:20:34] [INFO] Transaction Reversal Data: {"OriginatorConversationID":"Partner name -58c7cc9c-7406-49b4-a236-8396e5605557","Initiator":"apitest","SecurityCredential":"lMhf0UqE4ydeEDwpUskmPgkNDZnA6NLi7z3T1TQuWCkH3\/ScW8pRRnobq\/AcwFvbC961+zDMgOEYGm8Oivb7L\/7Y9ED3lhR7pJvnH8B1wYis5ifdeeWI6XE2NSq8X1Tc7QB9Dg8SlPEud3tgloB2DlT+JIv3ebIl\/J\/8ihGVrq499bt1pz\/EA2nzkCtGeHRNbEDxkqkEnbioV0OM\/\/0bv4K++XyV6jUFlIIgkDkmcK6aOU8mPBHs2um9aP+Y+nTJaa6uHDudRFg0+3G6gt1zRCPs8AYbts2IebseBGfZKv5K6Lqk9\/W8657gEkrDZE8Mi78MVianqHdY\/8d6D9KKhw==","CommandID":"TransactionReversal","TransactionID":"0","Amount":200,"OriginalConcersationID":"AG-20250318-d6d332fa-68b9-404c-8729-f444b6fe46b6","PartyA":"1020","ReceiverParty":"251700404709","RecieverIdentifierType":"4","ResultURL":"https:\/\/www.myservice:8080\/result","QueueTimeOutURL":"https:\/\/www.myservice:8080\/timeout","Remarks":"B2C Reversal","Occasion":"Layout"}
+[2025-03-18 20:20:34] [ERROR] Transaction Reversal error: Server error: `POST https://apisandbox.safaricom.et/mpesa/reversal/v2/request` resulted in a `500 Internal Server Error` response:
+{
+                    "requestId":"Partner name -58c7cc9c-7406-49b4-a236-8396e5605557",
+                    "errorCode": (truncated...)
+

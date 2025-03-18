@@ -16,13 +16,13 @@ class C2BRegister
     /**
      * Register validation and confirmation URLs for C2B transactions.
      */
-    public function registerUrl(string $shortCode, string $confirmationUrl, string $validationUrl, string $apiKey): array
+    public function registerUrl(array $inputData, /*string $shortCode, string $confirmationUrl, string $validationUrl, string $apiKey*/): array
     {
         Validator::validate([
-            'ShortCode' => $shortCode,
-            'ConfirmationURL' => $confirmationUrl,
-            'ValidationURL' => $validationUrl,
-            'ApiKey' => $apiKey,
+            'ShortCode' => $inputData['shortCode'],
+            'ConfirmationURL' => $inputData['confirmationUrl'],
+            'ValidationURL' => $inputData['validationUrl'],
+            'ApiKey' => $inputData['apiKey'],
         ], [
             'ShortCode' => 'required|string',
             'ConfirmationURL' => 'required|url',
@@ -31,32 +31,13 @@ class C2BRegister
         ]);
 
         $data = [
-            'ShortCode' => $shortCode,
+            'ShortCode' => $inputData['shortCode'],
             'ResponseType' => 'Completed',
             'CommandID' => 'RegisterURL',
-            'ConfirmationURL' => $confirmationUrl,
-            'ValidationURL' => $validationUrl,
+            'ConfirmationURL' => $inputData['confirmationUrl'],
+            'ValidationURL' => $inputData['validationUrl'],
         ];
 
-        return $this->client->request('POST', "/v1/c2b-register-url/register?apikey={$apiKey}", $data);
-    }
-
-    /**
-     * Process a C2B payment.
-     */
-    public function processPayment(array $data): array
-    {
-        /*Validator::validate($data, [
-            'RequestRefID' => 'required|string',
-            'CommandID' => 'required|string',
-            'Amount' => 'required|numeric',
-            'AccountReference' => 'required|string',
-            'Currency' => 'required|string',
-            'Timestamp' => 'required|string',
-            'ReceiverParty.Identifier' => 'required|string',
-            'ReceiverParty.ShortCode' => 'required|string',
-        ]);*/
-
-        return $this->client->request('POST', '/v1/c2b/payments', $data);
+        return $this->client->request('POST', "/v1/c2b-register-url/register?apikey={$inputData['apiKey']}", $data);
     }
 }

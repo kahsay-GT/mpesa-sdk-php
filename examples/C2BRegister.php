@@ -10,10 +10,12 @@ class C2BRegisterService
 {
     private string $logFilePath;
     private Client $client;
+    private array $inputData;
 
-    public function __construct()
+    public function __construct($data)
     {
         $this->logFilePath = __DIR__ . '/logs/c2b_register.log';
+        $this->inputData = $data;
     }
 
     /**
@@ -27,12 +29,7 @@ class C2BRegisterService
             $logger = getLogger($this->logFilePath); // From Authentication.php
 
             $c2b = new C2BRegister($this->client); // Use the authenticated client
-            $c2bResponse = $c2b->registerUrl(
-                '101050', // ShortCode
-                'http://example.com/c2b/confirmation', // ConfirmationURL
-                'http://example.com/c2b/validation', // ValidationURL
-                '0rqeFee8klD8whDdkjfwdJpfQkqtRnL8ZbxQ0Iov1M7e3SCN' // ConsumerKey (used as InitiatorID or similar)
-            );
+            $c2bResponse = $c2b->registerUrl($this->inputData);
             $logger->info("C2B URL Registration Response: " . json_encode($c2bResponse));
             echo "C2B URL Registration Response: " . json_encode($c2bResponse) . "\n";
             return $c2bResponse;
@@ -51,7 +48,6 @@ class C2BRegisterService
     {
         try {
             $this->client = getClient(); // From Authentication.php
-            authenticate($this->client); // From Authentication.php
             $this->registerUrls();
         } catch (\Exception $e) {
             exit(1);
@@ -60,5 +56,13 @@ class C2BRegisterService
 }
 
 // Usage
-$service = new C2BRegisterService();
+$data = [
+    'shortCode' => '101051', // ShortCode
+    'responseType' => 'Completed', // Cancelled
+    'confirmationUrl' => 'http://example.com/c2b/confirmation', // ConfirmationURL
+    'validationUrl' => 'http://example.com/c2b/validation', // ValidationURL
+    'apiKey' => '0rqeFee8klD8whDdkjfwdJpfQkqtRnL8ZbxQ0Iov1M7e3SCN' // ConsumerKey (used as InitiatorID or similar)
+];
+
+$service = new C2BRegisterService($data);
 $service->run();

@@ -59,7 +59,7 @@ class AccountBalanceService
     {
         try {
             $this->client = getClient();
-            authenticate($this->client); // From Authentication.php
+            // authenticate($this->client); // From Authentication.php
             $this->queryAccountBalance();
         } catch (\Exception $e) {
             exit(1);

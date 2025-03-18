@@ -76,7 +76,7 @@ class StkPushService
     {
         try {
             $this->client = getClient(); // From Authentication.php
-            authenticate($this->client); // From Authentication.php
+            // authenticate($this->client); // From Authentication.php
             $this->processPayment();
         } catch (\Exception $e) {
             exit(1);
