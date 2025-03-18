@@ -180,7 +180,7 @@ $service->run();
 
 ---
 
-## Configuration ⚙️
+## Configuration in pure PHP ⚙️
 
 The `Authentication.php` file centralizes configuration. Customize it with:
 
@@ -192,6 +192,22 @@ $config = [
 ];
 $securityCredential = 'your_security_credential';
 ```
+
+## Configuration in Laravel ⚙️
+
+Configuration is managed via `config/mpesa.php` in Laravel projects. After publishing the config file with `php artisan vendor:publish --tag=mpesa-config`, customize it with your credentials. Use environment variables in your `.env` file:
+
+````env
+APP_ENV=development #production
+DEV_MPESA_BASE_URL=https://apisandbox.safaricom.et/
+DEV_MPESA_CONSUMER_KEY=your_consumer_key
+DEV_MPESA_CONSUMER_SECRET=your_consumer_secret
+DEV_SECURITY_CREDENTIAL=your_security_credential
+
+PROD_MPESA_BASE_URL=https://apisandbox.safaricom.et/
+PROD_MPESA_CONSUMER_KEY=your_consumer_key
+PROD_MPESA_CONSUMER_SECRET=your_consumer_secret
+PROD_SECURITY_CREDENTIAL=your_security_credential
 
 ---
 
@@ -214,7 +230,7 @@ class MpesaController extends Controller {
         return response()->json($response);
     }
 }
-```
+````
 
 ---
 
