@@ -261,6 +261,14 @@ class MpesaController extends Controller {
 
 ---
 
+## Testing
+
+This package uses Phpunit for testing. To run the tests, use the following command:
+
+```bash
+vendor/bin/phpunit  -
+```
+
 ## Customization
 
 - **Paths**: Adjust `require` paths based on where you place `Authentication.php` and service files.
