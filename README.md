@@ -266,6 +266,15 @@ class MpesaController extends Controller
 
 ---
 
+## Web Route
+
+```
+Route::get('/test-mpesa', [MpesaController::class, 'testSdk']);
+
+```
+
+---
+
 ## Notes 📝
 
 - **Service Classes**: Each service class (e.g., `StkPushService`) encapsulates an API operation. Copy the full implementations from your project files.
