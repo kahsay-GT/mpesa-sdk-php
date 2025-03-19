@@ -216,18 +216,50 @@ PROD_SECURITY_CREDENTIAL=your_security_credential
 In a Laravel controller:
 
 ```php
+<?php
+
 namespace App\Http\Controllers;
 
+use Mpesa\Sdk\Authentication as MpesaAuth;
 use Mpesa\Sdk\Client;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 
-class MpesaController extends Controller {
-    public function testStkPush() {
-        require __DIR__ . '/../../Authentication.php'; // Adjust path
-        $client = getClient();
-        authenticate($client);
-        $stk = new \Mpesa\Sdk\StkPush($client);
-        $response = $stk->processPayment([...]);
-        return response()->json($response);
+class MpesaController extends Controller
+{
+    private function getClient(): Client
+    {
+        $env = env('APP_ENV', 'development');
+        $config = config("mpesa.{$env}", [
+            'base_url' => 'https://apisandbox.safaricom.et/mpesa/',
+            'consumer_key' => 'YOUR_CONSUMER_KEY',
+            'consumer_secret' => 'YOUR_CONSUMER_SECRET',
+        ]);
+        return new Client(array_merge($config, [
+            'timeout' => 1, 'retries' => 5, 'retry_delay' => 10,
+        ]));
+    }
+
+    private function authenticate(Client $client): string
+    {
+        $auth = new MpesaAuth($client);
+        $token = $auth->generateToken();
+        Log::info("M-Pesa Auth Success", ['token' => $token->accessToken]);
+        return $token->accessToken;
+    }
+
+    private function getAccessToken(): string
+    {
+        return Cache::remember('mpesa_access_token', 3599, fn() => $this->authenticate($this->getClient()));
+    }
+
+    public function testSdk()
+    {
+        try {
+            return response()->json(['token' => $this->getAccessToken()]);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
 }
 ````
@@ -261,12 +293,17 @@ class MpesaController extends Controller {
 
 ---
 
-## Testing
+## Testing Examples
 
-This package uses Phpunit for testing. To run the tests, use the following command:
+This package uses Php for testing. To run the tests, use the following command:
 
 ```bash
-vendor/bin/phpunit  -
+
+   php  examples/Authentication.php
+   php  examples/AccountBalance.php
+   .
+   .
+   .
 ```
 
 ## Customization

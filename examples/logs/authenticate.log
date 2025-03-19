@@ -1,14 +1,15 @@
-[2025-03-18 20:21:57] [INFO] Using cached token: Vlfi5uP2RRew45lMrtBYNBKpOEAp
-[2025-03-18 20:22:21] [INFO] Token expired or invalid. Re-authenticating...
-[2025-03-18 20:22:23] [INFO] Authentication successful. Access Token: Qt7bYGGwMmZWP4xmG5NdMX2sGypU
-[2025-03-18 20:22:23] [INFO] Token Data: {"accessToken":"Qt7bYGGwMmZWP4xmG5NdMX2sGypU","tokenType":"Bearer","expiresIn":"3599"}
-[2025-03-18 20:22:40] [INFO] Using cached token: Qt7bYGGwMmZWP4xmG5NdMX2sGypU
-[2025-03-18 20:55:58] [INFO] Using cached token: Qt7bYGGwMmZWP4xmG5NdMX2sGypU
-[2025-03-18 20:58:17] [INFO] Using cached token: Qt7bYGGwMmZWP4xmG5NdMX2sGypU
-[2025-03-18 20:58:47] [INFO] Using cached token: Qt7bYGGwMmZWP4xmG5NdMX2sGypU
-[2025-03-18 22:01:40] [INFO] No token found. Authenticating...
-[2025-03-18 22:01:42] [INFO] Authentication successful. Access Token: jct18AM91bxcBlMBccGrWGbxY8JH
-[2025-03-18 22:01:42] [INFO] Token Data: {"accessToken":"jct18AM91bxcBlMBccGrWGbxY8JH","tokenType":"Bearer","expiresIn":"3599"}
-[2025-03-18 22:02:03] [INFO] No token found. Authenticating...
-[2025-03-18 22:02:04] [INFO] Authentication successful. Access Token: X9SqSZxXYmKeQSz6DzZfLgyTPJ4b
-[2025-03-18 22:02:04] [INFO] Token Data: {"accessToken":"X9SqSZxXYmKeQSz6DzZfLgyTPJ4b","tokenType":"Bearer","expiresIn":"3599"}
+[2025-03-19 08:45:42] [INFO] Token expired or invalid. Re-authenticating...
+[2025-03-19 08:45:43] [INFO] Authentication successful. Access Token: kyL9eqWfthpOIH7DYQsd3DUEH6Ys
+[2025-03-19 08:45:43] [INFO] Token Data: {"accessToken":"kyL9eqWfthpOIH7DYQsd3DUEH6Ys","tokenType":"Bearer","expiresIn":"3599"}
+[2025-03-19 08:45:44] [INFO] Authentication successful. Access Token: 9B7Onj0CApWJEIdzGGBi9AGRO10V
+[2025-03-19 08:45:44] [INFO] Token Data: {"accessToken":"9B7Onj0CApWJEIdzGGBi9AGRO10V","tokenType":"Bearer","expiresIn":"3599"}
+[2025-03-19 09:11:41] [INFO] Using cached token: 9B7Onj0CApWJEIdzGGBi9AGRO10V
+[2025-03-19 09:11:53] [INFO] Token expired or invalid. Re-authenticating...
+[2025-03-19 09:11:55] [INFO] Authentication successful. Access Token: s9iGjfQEeG6iKKYqi1EFlldPuYwy
+[2025-03-19 09:11:55] [INFO] Token Data: {"accessToken":"s9iGjfQEeG6iKKYqi1EFlldPuYwy","tokenType":"Bearer","expiresIn":"3599"}
+[2025-03-19 09:12:23] [INFO] Token expired or invalid. Re-authenticating...
+[2025-03-19 09:12:24] [INFO] Authentication successful. Access Token: rWyW6zljAWDwuvmG52ASuhCqvibI
+[2025-03-19 09:12:24] [INFO] Token Data: {"accessToken":"rWyW6zljAWDwuvmG52ASuhCqvibI","tokenType":"Bearer","expiresIn":"3599"}
+[2025-03-19 09:12:35] [INFO] Using cached token: rWyW6zljAWDwuvmG52ASuhCqvibI
+[2025-03-19 09:12:36] [INFO] Authentication successful. Access Token: XZzJRGiUxg3X6TVqH32bLett9cJ2
+[2025-03-19 09:12:36] [INFO] Token Data: {"accessToken":"XZzJRGiUxg3X6TVqH32bLett9cJ2","tokenType":"Bearer","expiresIn":"3599"}
