@@ -3,18 +3,18 @@
 require __DIR__ . '/../vendor/autoload.php';
 require __DIR__ . '/Authentication.php'; // Include the shared Authentication.php
 
-use Mpesa\Sdk\StkPush;
+use Mpesa\Sdk\C2BValidate;
 use Mpesa\Sdk\Client;
 use Ramsey\Uuid\Uuid;
 
-class StkPushService
+class C2BValidateService
 {
     private string $logFilePath;
     private Client $client;
 
     public function __construct()
     {
-        $this->logFilePath = __DIR__ . '/logs/stkpush.log';
+        $this->logFilePath = __DIR__ . '/logs/c2bvalidate.log';
     }
 
     /**
@@ -22,30 +22,29 @@ class StkPushService
      * @return array
      * @throws \Exception
      */
-    public function processPayment(): array
+    public function c2bValidate(string $validateBaseUrl): array
     {
         try {
             $logger = getLogger($this->logFilePath); // From Authentication.php
 
-            $stk = new StkPush($this->client); // Use the authenticated client
-            $stkData = [
-                'MerchantRequestID' => 'Partner name -' . Uuid::uuid4()->toString(),
-                'BusinessShortCode' => '1020',
-                'Password' => 'M2VkZGU2YWY1Y2RhMzIyOWRjMmFkMTRiMjdjOWIwOWUxZDFlZDZiNGQ0OGYyMDRiNjg0ZDZhNWM2NTQyNTk2ZA==',
-                'Timestamp' => '20240918055823',
-                'TransactionType' => 'CustomerPayBillOnline',
-                'Amount' => 20,
-                'PartyA' => '251700404709',
-                'PartyB' => '1020',
-                'PhoneNumber' => '251706531263',
-                'CallBackURL' => 'https://www.myservice:8080/result',
-                'AccountReference' => 'Partner Unique ID',
-                'TransactionDesc' => 'Payment Reason',
-                'ReferenceData' => [
-                    ['Key' => 'ThirdPartyReference', 'Value' => 'Ref-12345'],
-                ],
+            $validate = new C2BValidate($this->client); // Use the authenticated client
+            $validateData = [
+                "RequestType" => "Validation",
+                "TransactionType" => "Pay Bill",
+                "TransID" => "RCH7BT9MZ1",
+                "TransTime" => "20230317122839",
+                "TransAmount" => "10",
+                "BusinessShortCode" => "802025",
+                "BillRefNumber" => "3JBMD1",
+                "InvoiceNumber" => "",
+                "OrgAccountBalance" => "",
+                "ThirdPartyTransID" => "TXN12RTFR",
+                "MSISDN" => "251700100150",
+                "FirstName" => "Clement",
+                "MiddleName" => "******",
+                "LastName" => "******"
             ];
-            $response = $stk->processPayment($stkData);
+            $response = $validate->c2bValidate($validateData,$validateBaseUrl);
 
             $logger->info("STK Push successful: " . json_encode($response));
             echo "STK Push processed successfully!\n";
@@ -72,12 +71,12 @@ class StkPushService
     /**
      * Execute the full process: authenticate and process STK Push payment
      */
-    public function run(): void
+    public function run(string $validateBaseUrl): void
     {
         try {
             $this->client = getClient(); // From Authentication.php
             authenticate($this->client); // From Authentication.php
-            $this->processPayment();
+            $this->c2bValidate($validateBaseUrl);
         } catch (\Exception $e) {
             exit(1);
         }
@@ -85,5 +84,6 @@ class StkPushService
 }
 
 // Usage
-$service = new StkPushService();
-$service->run();
+$validateBaseUrl = "https://www.myservice:8080/validation"; // Replace it with you own
+$service = new C2BValidateService();
+$service->run($validateBaseUrl);

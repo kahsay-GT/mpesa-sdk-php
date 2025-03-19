@@ -54,7 +54,7 @@ class SimulateTransactionService
     {
         try {
             $this->client = getClient(); // From Authentication.php
-            // authenticate($this->client); // From Authentication.php
+            authenticate($this->client); // From Authentication.php
             $this->simulateTransaction();
         } catch (\Exception $e) {
             exit(1);

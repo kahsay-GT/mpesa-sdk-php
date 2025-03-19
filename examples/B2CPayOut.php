@@ -60,7 +60,7 @@ class B2CPayOutService
     {
         try {
             $this->client = getClient(); // From Authentication.php
-            // authenticate($this->client); // From Authentication.php
+            authenticate($this->client); // From Authentication.php
             $this->processPayout();
         } catch (\Exception $e) {
             exit(1);

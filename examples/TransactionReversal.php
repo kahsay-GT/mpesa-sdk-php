@@ -65,7 +65,7 @@ class TransactionReversalService
     {
         try {
             $this->client = getClient(); // From Authentication.php
-            // authenticate($this->client); // From Authentication.php
+            authenticate($this->client); // From Authentication.php
             $this->reverseTransaction();
         } catch (\Exception $e) {
             exit(1);

@@ -60,7 +60,7 @@ class TransactionStatusService
     {
         try {
             $this->client = getClient(); // From Authentication.php
-            // authenticate($this->client); // From Authentication.php
+            authenticate($this->client); // From Authentication.php
             $this->queryTransactionStatus();
         } catch (\Exception $e) {
             exit(1);

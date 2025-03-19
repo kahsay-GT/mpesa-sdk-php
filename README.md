@@ -266,10 +266,21 @@ class MpesaController extends Controller
 
 ---
 
-## Web Route
+## Api Route
 
 ```
 Route::get('/test-mpesa', [MpesaController::class, 'testSdk']);
+
+Route::prefix('mpesa')->group(function () {
+    Route::get('/auth', [MpesaController::class, 'getToken']);
+    Route::post('/balance', [MpesaController::class, 'checkBalance']);
+    Route::post('/b2c/payout', [MpesaController::class, 'b2cPayout']);
+    Route::post('/c2b/register', [MpesaController::class, 'c2bRegister']);
+    Route::post('/c2b/simulate', [MpesaController::class, 'simulateTransaction']);
+    Route::post('/stk/push', [MpesaController::class, 'stkPush']);
+    Route::post('/reverse', [MpesaController::class, 'reverseTransaction']);
+    Route::post('/status', [MpesaController::class, 'transactionStatus']);
+});
 
 ```
 
@@ -309,9 +320,15 @@ This package uses Php for testing. To run the tests, use the following command:
 ```bash
 
    php  examples/Authentication.php
+   php  examples/StkPush.php
+   php  examples/C2BRegister.php
+   php  examples/C2BValidate.php
+   php  examples/C2BConfirm.php
+   php  examples/SimulateTransaction.php
+   php  examples/B2CPayOut.php
+   php  examples/TransactionStatus.php
    php  examples/AccountBalance.php
-   .
-   .
+   php  examples/TransactionReversal.php
    .
 ```
 
